@@ -1,0 +1,33 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="test" extends="struts-default">
+		<interceptors>
+			<interceptor name="dao" class="test.struts.interceptor.DAOInterceptor"></interceptor>
+		</interceptors>
+
+		<action name="hello" class="test.struts.action.HelloAction">
+			<interceptor-ref name="dao"></interceptor-ref>
+			<result>/WEB-INF/views/1116/hello.jsp</result>
+			<result name="ok">/WEB-INF/views/1116/test.jsp</result>
+		</action>
+		<action name="hello2" class="test.struts.action.TestAction">
+			<result type="chain">test</result>
+		</action>
+		<action name="test" class="test.struts.action.TestAction" method="action">
+			<result type="chain">form</result>
+			<result name="ok">/WEB-INF/views/1116/test.jsp</result>
+		</action>
+		<action name="form" class="test.struts.action.FormAction">
+			<result>/WEB-INF/views/1116/form.jsp</result>
+		</action>
+		<action name="pro" class="test.struts.action.FormAction" method="pro">
+			<result>/WEB-INF/views/1116/pro.jsp</result>
+		</action>
+	</package>
+</struts>
+
+
+
